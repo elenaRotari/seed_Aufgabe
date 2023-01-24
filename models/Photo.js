@@ -5,6 +5,7 @@ const equipmentSchema = mongoose.Schema({
     required: true,
   },
   photograph: String,
+  _id: false,
 });
 const settingSchema = mongoose.Schema({
   focalLength: {
@@ -21,15 +22,14 @@ const settingSchema = mongoose.Schema({
   },
   iso: {
     type: Number,
-    required: true,
   },
   whiteBalance: {
     type: Number,
-    required: true,
   },
+  _id: false,
 });
 
-const userSchema = mongoose.Schema({
+const photoSchema = mongoose.Schema({
   title: {
     type: String,
     required: true,
@@ -48,10 +48,10 @@ const userSchema = mongoose.Schema({
       required: true,
     },
   ],
+
   settings: {
     type: settingSchema,
-    required: true,
   },
 });
 
-export default mongoose.model("Photo", userSchema);
+export default mongoose.model("Photo", photoSchema);

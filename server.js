@@ -1,10 +1,11 @@
 import * as dotenv from "dotenv";
 dotenv.config();
 import express from "express";
-
+import mongoose from "mongoose";
 import morgan from "morgan";
 import cors from "cors";
 import userRouter from "./routes/photoRoute.js";
+import albumRoute from "./routes/albumRoute.js";
 import "./lib/connect.js";
 
 const PORT = process.env.PORT || 4000;
@@ -19,6 +20,8 @@ app.use(express.json());
 
 // set routes
 app.use("/photos", userRouter);
+app.use("/albums", albumRoute);
+mongoose.set("strictQuery", true);
 
 // set express on PORT
 app.listen(PORT, () => {
